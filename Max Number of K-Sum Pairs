@@ -1,0 +1,28 @@
+class Solution:
+    def maxOperations(self, nums: List[int], k: int) -> int:
+        
+        nums.sort()
+        pairs = 0
+        left  = 0
+        right = len(nums)-1
+        while left<right:
+            total = nums[left] + nums[right]
+            if total == k:
+                pairs+=1
+                left+=1
+                right-=1
+            elif total < k :
+                left+=1
+            else :
+                right-=1
+        return pairs
+        # pairs = 0
+        # hash_map = {}
+        # for num in nums:
+        #     if k - num in hash_map and hash_map[k-num] > 0 :
+        #         pairs+=1
+        #         hash_map[k-num]-=1
+        #     else :
+        #         hash_map[num] = hash_map.get(num,0)+1
+        # return pairs
+        
