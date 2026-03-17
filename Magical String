@@ -1,0 +1,21 @@
+class Solution:
+    def magicalString(self, n: int) -> int:
+
+        res = [1,2,2]
+        num = 1
+        head = 2
+        ones = 1
+        while len(res)<n:
+            cnt = res[head]
+            for _ in range(cnt):
+                if len(res)<n:
+                    res.append(num)
+                    if num == 1:
+                        ones+=1
+            num = 2 if num == 1 else 1
+            head+=1
+        return ones
+        
+
+            
+        
